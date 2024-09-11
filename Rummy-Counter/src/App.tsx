@@ -39,6 +39,13 @@ function App() {
     setCounter(63);
     clearInterval(intervalRef.current!);
   };
+
+  if (counter <= 10) {
+    navigator.vibrate(200);
+  } else {
+    console.log("Vibration is not supportet");
+  }
+
   return (
     <div className="flex w-full h-screen flex-col justify-evenly items-center pl-4 pr-4 bg-slate-100 border-8 border-slate-300">
       <h2 className="font-abril text-5xl rotate-180">Rummyclub</h2>
@@ -52,7 +59,11 @@ function App() {
       >
         Weiter
       </Button>
-      <div className=" border-4 rounded-lg p-20 border-slate-300 w-full">
+      <div
+        className={` border-4 rounded-lg p-20 border-slate-300 w-full ${
+          counter === 10 ? "bg-red-500" : ""
+        }`}
+      >
         <div className="flex justify-center items-center">
           <div className="w-auto h-auto text-black flex justify-center items-center text-8xl">
             <div
